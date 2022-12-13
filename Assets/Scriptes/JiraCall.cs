@@ -7,9 +7,8 @@ using System.Collections;
 
 public class JiraCall
 {
-    public IEnumerator EnuJira(){
+    public IEnumerator EnuJira(string token){
         string email = "manuel.paurevic@oasisdigital.com";
-        string token = "qFqFOk5FQKviMGmdWOzKB4AD";
         string authCache = System.Convert.ToBase64String(Encoding.UTF8.GetBytes(email + ":" + token));
 
         UnityWebRequest request = UnityWebRequest.Get("https://oasisintern.atlassian.net/rest/api/latest/myself");

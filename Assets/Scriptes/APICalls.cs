@@ -12,9 +12,10 @@ public class APICalls : MonoBehaviour
 {
 
     public TMP_Text textbox;
+    public TMP_InputField input;
 
     public void testCall(){
-        StartCoroutine(EnuJira(returnValue => 
+        StartCoroutine(EnuJira(input.text ,returnValue => 
         {
             textbox.text = returnValue;
         }
@@ -25,9 +26,8 @@ public class APICalls : MonoBehaviour
     }
 
 
-    IEnumerator EnuJira(System.Action<string> callback = null){
+    IEnumerator EnuJira(string token, System.Action<string> callback = null){
         string email = "manuel.paurevic@oasisdigital.com";
-        string token = "qFqFOk5FQKviMGmdWOzKB4AD";
         string authCache = System.Convert.ToBase64String(Encoding.UTF8.GetBytes(email + ":" + token));
 
         UnityWebRequest request = UnityWebRequest.Get("https://oasisintern.atlassian.net/rest/api/latest/myself");
