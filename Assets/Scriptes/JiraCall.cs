@@ -18,8 +18,10 @@ public static class JiraCall
 
         if(request.isNetworkError || request.isHttpError){
             Debug.Log("Error while Receiving: " + request.error);
-            yield return request.error;
-            callback.Invoke(request.error);
+            string result = request.downloadHandler.text;
+            callback.Invoke(result);
+            //yield return request.error;
+            //callback.Invoke(request.error);
         }else{
             string result = request.downloadHandler.text;
             callback.Invoke(result);
