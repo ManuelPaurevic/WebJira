@@ -16,13 +16,13 @@ public class APICalls : MonoBehaviour
     public TMP_InputField input;
     public User user1;
 
-    [DllImport("__Internal")]
-    private static extern string jsAPICall(string x);
+    //[DllImport("__Internal")]
+    //private static extern string jsAPICall(string x);
 
 
 
     public void testCall(){
-        /*
+        
         StartCoroutine(JiraCall.EnuJira(input.text ,returnValue => 
         {
             user1 = JsonUtility.FromJson<User>(returnValue);
@@ -30,9 +30,9 @@ public class APICalls : MonoBehaviour
             textbox.text = user1.emailAddress;
         }
         ));
-        */
-        string token = input.text;
-        textbox.text = jsAPICall(token);
+    
+        //string token = input.text;
+        //textbox.text = jsAPICall(token);
         
 
 
