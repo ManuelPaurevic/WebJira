@@ -13,10 +13,7 @@ public static class JiraCall
 
         UnityWebRequest request = UnityWebRequest.Get("https://oasisintern.atlassian.net/rest/api/latest/myself");
         request.SetRequestHeader("Authorization", "Basic " + authCache);
-        request.SetRequestHeader("Access-Control-Allow-Origin", "*");
-        request.SetRequestHeader("Access-Control-Allow-Headers", "application/json");
         
-
         yield return request.SendWebRequest();
 
         if(request.result == UnityWebRequest.Result.ProtocolError){
