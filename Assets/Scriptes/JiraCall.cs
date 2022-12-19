@@ -8,12 +8,13 @@ using System.Collections;
 
 public static class JiraCall
 {
-    public static IEnumerator EnuJira(string token, System.Action<string> callback = null){
+    public static IEnumerator EnuJira(System.Action<string> callback = null){
         string email = "manuel.paurevic@oasisdigital.com";
+        string token = "bWFudWVsLnBhdXJldmljQG9hc2lzZGlnaXRhbC5jb206eWlNZ1BnSzlQZ3d2Rnp5RUY3c2I0NzM4";
         string authCache = System.Convert.ToBase64String(Encoding.UTF8.GetBytes(email + ":" + token));
 
         UnityWebRequest request = UnityWebRequest.Get("https://oasisintern.atlassian.net/rest/api/latest/myself");
-        request.SetRequestHeader("Authorization", "Basic " + authCache);
+        request.SetRequestHeader("Authorization", "Basic " + token);
         
         
         yield return request.SendWebRequest();
@@ -31,7 +32,7 @@ public static class JiraCall
     }
 
     public static IEnumerator GetFromProxy(System.Action<string> callback = null){
-        UnityWebRequest request = UnityWebRequest.Get("localhost:5000");
+        UnityWebRequest request = UnityWebRequest.Get("http://localhost:5000");
         
         yield return request.SendWebRequest();
 
