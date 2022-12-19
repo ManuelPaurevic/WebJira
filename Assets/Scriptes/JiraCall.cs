@@ -30,6 +30,23 @@ public static class JiraCall
         }
     }
 
+    public static IEnumerator GetFromProxy(System.Action<string> callback = null){
+        UnityWebRequest request = UnityWebRequest.Get("localhost:5000");
+        
+        yield return request.SendWebRequest();
+
+        if(request.result == UnityWebRequest.Result.ProtocolError){
+            Debug.Log("Error while Receiving: " + request.error);
+            string result = request.downloadHandler.text;
+            callback.Invoke(result);
+            //yield return request.error;
+            //callback.Invoke(request.error);
+        }else{
+            string result = request.downloadHandler.text;
+            callback.Invoke(result);
+        }
+    }
+
 
  
 
